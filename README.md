@@ -1,1 +1,3 @@
-# master_thesis_mood_tracker
+# Mood Tracker
+
+## Introduction
