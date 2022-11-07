@@ -1,0 +1,95 @@
+% Read the readme first!
+% options:
+% - uulm-draft: show todonotes, links, linenumbers hide label names
+% - uulm-draft-verbose: show todonotes, links, linenumbers, label names
+% - uulm-release-electronic: show links, hide todonotes, linenumbers, label names
+% - uulm-release-print hide everything
+%
+\documentclass[uulm-release-print]{thesis-uulm}
+
+% workarround for some stupid error in combination with IEEEtran, bibtex and babel.
+\makeatletter
+\def\markboth#1#2{%
+  \def\leftmark{\@IEEEcompsoconly{\sffamily}#1}%
+  \def\rightmark{\@IEEEcompsoconly{\sffamily}#2}}
+\makeatother
+
+% Choose language
+%%\usepackage[ngerman]{babel}
+ \usepackage[english]{babel}
+
+% Fonts
+\renewcommand{\sfdefault}{phv}
+\renewcommand{\rmdefault}{phv}
+\renewcommand{\ttdefault}{pcr}
+
+% Adjust variables
+\author{Christoph Meyer}
+\title{Title of the thesis}
+\email{christoph-1.meyer@uni-ulm.de}
+\matnr{933728}	% Student ID
+\degree{Master Software Engineering} %program you are enrolled
+
+\type{Master Thesis} % Type of Thesis (Bachelors, Masters)
+\jahr{2022/23}
+
+\gutachterA{Prof. Dr. Manfred Reichert} % First Reviewer
+\gutachterB{Dr. Felix Beierle}  % Second reviewer
+\betreuer{Dr. Felix Beierle} % supervisor
+
+% Can be user to only compile parts of the document
+\includeonly{
+template/definitions,
+chapters/introduction,
+chapters/goal,
+chapters/methology,
+chapters/timeline,
+chapters/appendix
+}
+
+% Definitions for code listings
+\include{template/definitions}
+
+\begin{document}
+
+\frontmatter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{roman}
+\begin{nolinenumbers}
+\maketitle
+
+\copyrightpage
+\end{nolinenumbers}
+
+\setstretch{1.2}
+
+\begin{abstract}
+\end{abstract}
+
+\begin{nolinenumbers}
+\tableofcontents
+\end{nolinenumbers}
+
+\mainmatter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{arabic}
+\include{chapters/introduction}
+\include{chapters/goal}
+\include{chapters/methology}
+\include{chapters/timeline}
+
+%\appendix
+%% \include{chapters/appendix}
+
+\backmatter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\listoffigures
+\listoftables
+
+%\bibliographystyle{natdin}
+\bibliographystyle{IEEEtranS}	% alternativer Stil
+\bibliography{bibliography} % Bib-Datei
+
+\cleardoublepage
+\clearscrheadfoot
+\declaration
+
+\end{document}
