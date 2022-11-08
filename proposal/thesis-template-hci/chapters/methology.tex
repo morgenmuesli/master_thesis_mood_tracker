@@ -1,7 +1,51 @@
 %% methology.tex
-%%
-
 %% ==============================
 \chapter{Methology}
 \label{ch:methology}
 %% ==============================
+\section{Data collection}
+\label{sec:data-collection}
+This study is divided in two separated parts. The first part is a systematic review of the applications. We follow the guidelines of the reporting checklist of the Preferred Reporting Items for Systematic Reviews and Meta-Analysis (PRISMA\cite{moher2015preferred}).
+We define mood trackers as:
+"Applications for measuring and reporting mood by themselves on a daily basis".
+We exclude applications which are:
+\begin{itemize}
+    \item main focus is not mood tracking (eg. \textit{Daily Diary: Journal with Lock} \footnote{\url{https://play.google.com/store/apps/details?id=com.daily.journal.diary.lock.mood.tracker.free&hl=en&gl=US} Accessed on 2021-11-01})
+    \item doesn't collect mood behavior (eg. journalistic \footnote{\url{https://play.google.com/store/apps/details?id=com.journalisticapp.twa&hl=en&gl=US} Accessed on 2021-11-01})
+    \item tracking others behavior such as parenting applications or relationship applications (eg. \textit{behavior diary} \footnote{\url{https://play.google.com/store/apps/details?id=in.co.skycap.behaviourtracker&hl=en&gl=US} Accessed on 2021-11-01})
+    \item only available as a web app and not included in any applications store (eg. \textit{moodtracker.com}\footnote{\url{https://www.moodtracker.com/} Accessed on 2021-11-01})
+    \item targeting a specific group of people (eg. \textit{Bipolar Mood Tracker}\footnote{\url{https://play.google.com/store/apps/details?id=com.bipolar_flutter&hl=en&gl=US} Accessed on 2021-11-01})
+\end{itemize}
+As data source we are using the google play store\footnote{\url{https://play.google.com/store/games?hl=en&gl=US} Accessed on 2021-11-01 } as well as the apple appstore because the two operation systems covers more than 99\% of the worldwide mobile operation system market share.
+Our search queries are: ["mood tracker", "mood journal", "mood ema", "emotion tracker"].
+For feature extraction we are using the app descriptions as raw data. We include only applications which are available at the time period of our study (November 2022).
+The User Reviews are crawled with appbot\footnote{\url{https://appbot.co/} Accessed: 07.11.2022}.
+
+\section{Analyzing User Reviews}
+%% ==============================
+\subsection{Preprocessing}
+We group our data into positive, neutral and negative reviews using the star ratings.
+As negative we define reviews with 1 or 2 stars, as neutral reviews with 3 stars and as positive reviews with 4 or 5 stars.
+\label{sec:analyzing-user-reviews}
+For analyzing the user reviews we are using two types of data mining.
+In our first study we are using n-gram frequency to get a first impression on the most important features.
+In our second study we are using topic modeling to get a better understanding of the context of the reviews.
+\subsection{N-gram frequency}
+\label{sec:n-gram-frequency}
+Just apply the term frequency can lead to rather meaningless results.
+The reason for this is, that some words are more used in the corpus itself and doesn't give any information about the content of the reviews.
+Instead we using the tf-idf (term frequency-inverse document frequency) to get a better understanding of the content of the reviews.
+It is a combination of the term frequency and the inverse document frequency.
+The term frequency is the number of times a word appears in a document.
+The inverse document frequency is the logarithm of the number of documents divided by the number of documents in which the word appears.
+
+However using single words as features can lead to a lot of noise.
+Since their are many terms which belongs together. For example "battery life" or "user interface".
+To adress this issue we are using n-grams, which are sequences of n words.
+
+
+
+\subsection{Topic modeling}
+\section{Evaluate the results}
+
+For analyzing our results we are using the following metrics:
