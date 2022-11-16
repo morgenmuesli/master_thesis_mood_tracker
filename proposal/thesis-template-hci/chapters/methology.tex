@@ -39,13 +39,28 @@ It is a combination of the term frequency and the inverse document frequency.
 The term frequency is the number of times a word appears in a document.
 The inverse document frequency is the logarithm of the number of documents divided by the number of documents in which the word appears.
 
-However using single words as features can lead to a lot of noise.
-Since their are many terms which belongs together. For example "battery life" or "user interface".
+However using single words as features can lead to miss some important information, since there are many terms which belongs together. 
+For example "battery life" or "user interface".
 To adress this issue we are using n-grams, which are sequences of n words.
-
-
-
+We stick to words and bigrams (n=2) for reducing the amount of items.
 \subsection{Topic modeling}
+Our second approach is to use a topic modeling which is a type of statistical modeling for discovering the abstract "topics" that occur in a collection of documents.
+With that we can label each review and yet get a probably better unterstanding over the context of the reviews than with only the most frequent words.
+It is to discuss if with small documents like reviews have a single topic or if they have multiple topics.
+We first assume that they cover multiple topics.
+A common way for topic modeling with multiple topics is the Latent Dirichlet Allocation (LDA) \cite{blei2003latent}.
+The idea behind LDA is that seach document is a mixture of topics and each topic is a mixture of words.
+With that we can label each review with the most probable topic. The rating can be used to define if the topic is positive or negative for the user.
+However assume that a negative review doesn't contain any positive oppinion is not always true.
+For example a user can say that the application is not working as expected but the user interface is nice.
+To adress this, the usage of sentiment analysis for the sentences might be a better approach.
+
+The problem with LDA can be to have no topics which are meaningful.
+While the topics are generate by a statistical methode, it can be the case that the words which belongs to a model are difficult for a human to
+The second method we use is to use a neural network for topic modeling. 
+
+
+
 \section{Evaluate the results}
 
 For analyzing our results we are using the following metrics:
