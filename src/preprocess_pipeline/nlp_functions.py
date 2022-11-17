@@ -23,6 +23,7 @@ def count_tokens(data: pd.DataFrame, column: str, preprocess=None, min_freq=2):
     This function takes in a dataframe and returns a dataframe with the word count
     of each token.
     """
+
     def update(doc):
         tokens = doc if preprocess is None else preprocess(doc)
         counter.update(tokens)
@@ -37,18 +38,23 @@ def count_tokens(data: pd.DataFrame, column: str, preprocess=None, min_freq=2):
     return freq.sort_values('freq', ascending=False)
 
 
-def count_words(data: pd.DataFrame, column: str, preprocess=None, inplace=False):
+def count_words_in_row(data: pd.DataFrame, column: str,
+                       preprocess=lambda text: re.findall(r"\w+", text),
+                       inplace=False):
     """
     This function takes in a dataframe and returns a dataframe with the word count
     of each row.
     """
+
     def count(row):
         tokens = row[column] if preprocess is None else preprocess(row[column])
         return len(tokens)
+
     if inplace:
         data['word_count'] = data.apply(count, axis=1)
         return data
     else:
-        df = data[['id']].copy()
-        df['word_count'] = data.apply(count, axis=1)
+        df = data.copy()
+        df['word_count'] = df.apply(count, axis=1)
+        return df
 

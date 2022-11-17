@@ -20,12 +20,15 @@ def get_database(config):
         exit("Config file not found")
 
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--config', help='Path to config file')
     args = parser.parse_args()
     config = config_parser(args)
     database = get_database(config)
+
+
 
 
 
