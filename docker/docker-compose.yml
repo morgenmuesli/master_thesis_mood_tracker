@@ -1,11 +1,28 @@
-version: "3.5"
+version: "3.9"
 services:
   mariadb:
     image: mariadb:latest
     container_name: mariadb
     ports:
-      - 3306:3306
+      - "3306:3306" # should be deleted in production
     environment:
       MYSQL_ROOT_PASSWORD: "itsonlylocal"
     volumes:
       - ./mysql_data:/var/lib/mysql
+
+  python:
+    build:
+        context: ./python
+        dockerfile: Dockerfile
+    container_name: conda
+    working_dir: /usr/src/src
+    ports:
+      - "8888:8888" # for jupyter notebook
+    volumes:
+      - ../src:/usr/src/src
+    tty: true
+    command:
+      - /bin/bash
+    links:
+      - mariadb
+

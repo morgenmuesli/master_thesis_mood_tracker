@@ -58,3 +58,8 @@ def count_words_in_row(data: pd.DataFrame, column: str,
         df['word_count'] = df.apply(count, axis=1)
         return df
 
+def clean_text(text: str, regex: str, replace: str = ''):
+    """
+    This function takes in a string and returns a string with the text cleaned.
+    """
+    return re.sub(regex, replace, text)

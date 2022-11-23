@@ -2,6 +2,11 @@ import argparse
 import json
 from connector import DatabaseConnector
 import re
+import os
+
+def setup_os():
+    print(os.getcwd())
+
 
 RE_SUSPICIOUS = re.compile(r"[&#<>\[\]{}\\]")
 
@@ -17,16 +22,19 @@ def get_database(config):
         connector = DatabaseConnector(config)
         return connector.select('appreviewssmall', '*')
     except Exception as e:
-        exit("Config file not found")
+        exit(f"Config file not found: {e}")
 
 
 
 if __name__ == '__main__':
+    setup_os()
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', help='Path to config file')
+    parser.add_argument('--config', help='Path to config file', default='config.json')
     args = parser.parse_args()
     config = config_parser(args)
     database = get_database(config)
+    print(database)
+
 
 
 
