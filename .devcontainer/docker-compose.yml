@@ -11,15 +11,13 @@ services:
       - ./mysql_data:/var/lib/mysql
 
   python:
-    build:
-        context: ./python
-        dockerfile: Dockerfile
-    container_name: conda
-    working_dir: /usr/src/src
+    image: mcr.microsoft.com/playwright/python:v1.27.0-focal
+    container_name: python
+    working_dir: /usr/app
     ports:
       - "8888:8888" # for jupyter notebook
     volumes:
-      - ../src:/usr/src/src
+      - ../app:/usr/app
     tty: true
     command:
       - /bin/bash
