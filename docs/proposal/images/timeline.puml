@@ -1,0 +1,42 @@
+@startuml Schedule
+caption: Project Schedule
+printscale weekly
+
+Project starts 2022-11-20
+
+[Literature Review] as [LR] starts 2022-11-20
+[LR] ends 2022-12-23
+[Chrismas] as [Xmas] lasts 1 week
+[Xmas] starts 2022-12-23
+[Xmas] is colored in Red
+[Data collection with PRISMA] as [Data collection] starts 2022-11-20
+[Data collection] ends 2022-12-23
+[Data preprocessing] starts 2022-12-01
+[Data preprocessing] ends 2023-01-15
+[Keyword Extraction] starts 2023-01-01
+[Keyword Extraction] ends 2023-02-15
+[Topic Modeling] starts 2023-01-15
+[Topic Modeling] ends 2023-03-01
+[Holliday] starts 2023-02-28
+[Holliday] ends 2023-03-10
+[Holliday] is colored in red
+[Model Testing and Debugging] starts 2023-02-01
+[Model Testing and Debugging] ends 2023-03-25
+[Evaluation of Results] as [Evaluation] starts 2023-02-15
+[Evaluation] ends 2023-04-11
+[Writing] starts 2023-01-01
+[Writing] ends 2023-05-01
+[Submission pre-version] happens 2023-05-01
+[Proofreading] starts 2023-05-01
+[Proofreading] lasts 1 week
+[Correction] starts 2023-05-07 
+[Correction] lasts 1 week
+[Buffer] starts 2023-05-14 
+[Buffer] lasts 2 week
+
+[Submission] happens at 2023-06-15
+
+
+
+
+@enduml

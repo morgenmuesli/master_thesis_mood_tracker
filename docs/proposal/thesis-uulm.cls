@@ -213,7 +213,7 @@
 
 \RequirePackage{scrlayer-scrpage}
 \pagestyle{scrheadings}
-\clearscrheadfoot
+\clearpairofpagestyles 
 \automark[section]{chapter}
 
 \rohead{\MakeUppercase{\rightmark}}

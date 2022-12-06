@@ -5,21 +5,27 @@
 %% ==============================
 \section{Data collection}
 \label{sec:data-collection}
-This study is divided in two separated parts. The first part is a systematic review of the applications. We follow the guidelines of the reporting checklist of the Preferred Reporting Items for Systematic Reviews and Meta-Analysis (PRISMA\cite{moher2015preferred}).
+This study is divided in two separated parts. The first part is a systematic review of the applications. We follow the guidelines of the reporting checklist of the Preferred Reporting Items for Systematic Reviews and Meta-Analysis (PRISMA \cite{moher2015preferred}).
 We define mood trackers as:
 "Applications for measuring and reporting mood by themselves on a daily basis".
 We exclude applications which are:
 \begin{itemize}
-    \item main focus is not mood tracking (eg. \textit{Daily Diary: Journal with Lock} \footnote{\url{https://play.google.com/store/apps/details?id=com.daily.journal.diary.lock.mood.tracker.free&hl=en&gl=US} Accessed on 2021-11-01})
-    \item doesn't collect mood behavior (eg. journalistic \footnote{\url{https://play.google.com/store/apps/details?id=com.journalisticapp.twa&hl=en&gl=US} Accessed on 2021-11-01})
-    \item tracking others behavior such as parenting applications or relationship applications (eg. \textit{behavior diary} \footnote{\url{https://play.google.com/store/apps/details?id=in.co.skycap.behaviourtracker&hl=en&gl=US} Accessed on 2021-11-01})
-    \item only available as a web app and not included in any applications store (eg. \textit{moodtracker.com}\footnote{\url{https://www.moodtracker.com/} Accessed on 2021-11-01})
-    \item targeting a specific group of people (eg. \textit{Bipolar Mood Tracker}\footnote{\url{https://play.google.com/store/apps/details?id=com.bipolar_flutter&hl=en&gl=US} Accessed on 2021-11-01})
+    \item main focus is not mood tracking (eg. \textit{Daily Diary: Journal with Lock} \footnote{\url{https://play.google.com/store/apps/details?id=com.daily.journal.diary.lock.mood.tracker.free&hl=en&gl=US} Accessed: 2021-11-01})
+    \item doesn't collect mood behavior (eg. journalistic \footnote{\url{https://play.google.com/store/apps/details?id=com.journalisticapp.twa&hl=en&gl=US} Accessed: 2021-11-01})
+    \item tracking others behavior such as parenting applications or relationship applications (eg. \textit{behavior diary} \footnote{\url{https://play.google.com/store/apps/details?id=in.co.skycap.behaviourtracker&hl=en&gl=US} Accessed: 2021-11-01})
+    \item only available as a web app and not included in any applications store (eg. \textit{moodtracker.com}\footnote{\url{https://www.moodtracker.com/} Accessed: 2021-11-01})
+    \item targeting a specific group of people (eg. \textit{Bipolar Mood Tracker}\footnote{\url{https://play.google.com/store/apps/details?id=com.bipolar_flutter&hl=en&gl=US} Accessed: 2021-11-01})
 \end{itemize}
 As data source we are using the google play store\footnote{\url{https://play.google.com/store/games?hl=en&gl=US} Accessed on 2021-11-01 } as well as the apple appstore because the two operation systems covers more than 99\% of the worldwide mobile operation system market share.
 Our search queries are: ["mood tracker", "mood journal", "mood ema", "emotion tracker"].
 For feature extraction we are using the app descriptions as raw data. We include only applications which are available at the time period of our study (November 2022).
 The User Reviews are crawled with appbot\footnote{\url{https://appbot.co/} Accessed: 07.11.2022}.
+
+\section{Analyzing App Features}
+To extract the app feaures we download the Applications by ourself.
+We are using the same approach as Caldeira \cite{caldeira2017mobile} and categorize the features into:
+Preparation, Recording, Reflection, and Action.
+We also added privacy as another category, as this was mostly considered a concern of users in previous studies \cite{Balaskas2022UnderstandingUP}.
 
 \section{Analyzing User Reviews}
 %% ==============================
@@ -57,10 +63,14 @@ To adress this, the usage of sentiment analysis for the sentences might be a bet
 
 The problem with LDA can be to have no topics which are meaningful.
 While the topics are generate by a statistical methode, it can be the case that the words which belongs to a model are difficult for a human to
-The second method we use is to use a neural network for topic modeling. 
-
-
+The second method we use is to use a neural network for topic modeling.
+BERT-Topic \cite{grootendorst2022bertopic} is a current state of the art Topic Model which uses Bert Sentence Embeddings \cite{reimers2019sentence} as backbone. There are two advantage about this. At first we using the full sentence instead of single words for context analysis.
+The second, we can use predefined topics which makes more sense than with LDA.
+A limitation is, that we might miss some important topics which arent't predefined.
+The second is that we can't train a network on our own, because of our small dataset. This means we are limited to pretrained data and might have a bias.
 
 \section{Evaluate the results}
-
-For analyzing our results we are using the following metrics:
+We are using a combined evaluation using human judgment and quantitative metrics.
+For our human judgement we observe the top words in a topic using word clouds. 
+With our prior knowledge of older surveys and human interpretation we look for the frequency of word intrusion.
+In order to have a quantitative metric we use the coherence of the topics instead of perplexity.
