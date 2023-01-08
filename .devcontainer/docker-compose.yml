@@ -9,18 +9,6 @@ services:
       MYSQL_ROOT_PASSWORD: "itsonlylocal"
     volumes:
       - ./mysql_data:/var/lib/mysql
+    restart: unless-stopped
 
-  python:
-    image: mcr.microsoft.com/playwright/python:v1.27.0-focal
-    container_name: python
-    working_dir: /usr/app
-    ports:
-      - "8888:8888" # for jupyter notebook
-    volumes:
-      - ../app:/usr/app
-    tty: true
-    command:
-      - /bin/bash
-    links:
-      - mariadb
 
