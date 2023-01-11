@@ -1,29 +1,24 @@
 {
-  "name": "appstore_crawler",
+  "name": "js",
   "version": "1.0.0",
-  "description": "just a crawler for the appstore",
   "main": "index.js",
-  "scripts": {
-    "test": "node index.js",
-    "build": "webpack --mode=development"
-  },
-  "repository": {
-    "type": "git",
-    "url": "no"
-  },
-  "author": "",
   "license": "MIT",
-  "dependencies": {
-    "app-store-scraper": "^0.17.0",
-    "dotenv": "^16.0.3",
-    "mariadb": "^3.0.2",
-    "mysql2": "^2.3.3",
-    "node-polyfill-webpack-plugin": "^2.0.1",
-    "ts-node": "^10.9.1"
+  "scripts": {
+    "dev": "ts-node-dev --respawn --clear src/index.js",
+    "build": "tsc"
   },
+  "type": "commonjs",
   "devDependencies": {
+    "@tsconfig/node18": "^1.0.1",
+    "@types/node": "^18.11.18",
+    "app-store-scraper": "^0.17.0",
     "nodemon": "^2.0.20",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^4.9.1"
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "mariadb": "^3.0.2"
   }
 }

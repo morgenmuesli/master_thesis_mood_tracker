@@ -1,14 +1,12 @@
 {
+    "extends": "@tsconfig/node16/tsconfig.json",
+
     "compilerOptions": {
-      "outDir": "./built",
-      "allowJs": true,
-      "target": "es5",
-      "lib": [
-        "dom",
-        "es5",
-        "scripthost",
-        "es2015.collection"
-      ]
+      "outDir": "dist",
+        "rootDir": "src",
+        "sourceMap": true,
+        "allowJs": true
     },
-    "include": ["./src/**/*"]
+    "include": ["src"],
+    "exclude": ["node_modules"]
   }
