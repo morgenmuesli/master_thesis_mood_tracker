@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/state-diagram
+
+
+[*] --> scrape
+scrape --> normalize
+
+
+
+
+@enduml

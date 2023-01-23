@@ -1,0 +1,39 @@
+\chapter{Methods}
+\section{Data collection}
+This study is divided in two separated parts. The first part is a systematic review of the applications. We follow the guidelines of the reporting checklist of the Preferred Reporting Items for Systematic Reviews and Meta-Analysis (PRISMA\cite{moher2015preferred}). 
+We define mood trackers as:
+"Applications for measuring and reporting mood by themselves on a daily basis".
+We exclude applications which are:
+\begin{itemize}
+    \item mainly focus on journaling and not mood tracking (eg. \textit{Daily Diary: Journal with Lock} \cite{simpleinnovation_2022})
+    \item doesn't collect mood behavior (eg. journalistic\cite{engelhardt_2020})
+    \item doesn't have a feature for self analyzing mood patterns (eg. \textit{Shmoody: Improve Your Mood} \cite{shmoody})
+    \item tracking others behavior such as parenting applications or relationship applications (eg. \textit{behavior tracker} \cite{skycap_2020})
+    \item only available as a web app and not included in any applications store (eg. \textit{moodtracker.com}\cite{moodtrackercom})
+\end{itemize}
+As data source we are using the google play store\cite{google} as well as the apple appstore because the two operation systems covers more than 99\% of the worldwide mobile operation system market share.
+Our search queries are: ["mood tracker", "mood journal", "mood ema", "emotion tracker"].
+For feature extraction we are using the app descriptions as raw data. We include only applications which are available at the time period of our study (November 2022). 
+The User Reviews are crawled with appbot\cite{appbot}.
+
+\section{Analyzing User Reviews}
+In research question RQ\_UR1 to RQ\_UR5 we are interested about the context of the different reviews.
+There are two types of approaches to get a closer look to that.
+An basic approach would be to use n-gram frequency of the topic which are discussed. With the given review stars and additional sentiment analysis we can discover if those topics are rated positiv or negative which is important to know to answer Question RQ\_UR03 - RQ\_UR05. 
+Instead of n\_grams we could also use an machine learning approach to learn the topics.
+By that we define abstract topics to which the different reviews belong.
+While having the prior information on the rating or using semantic segmentation we can check if those reviews are meant to be positive or negativ.
+
+
+
+\subsection{Topic Modelling vs. Extractive Topic Tagging vs. Predictive Topic Tagging}
+% keyword extraction. Possibilities: 1. Extract with tf-idf -> difficult because tfidf clusters 
+
+
+
+\subsection{Tf-IDF and LDA}
+
+\subsection{BertTopic}
+
+
+\section{Evaluation}

@@ -1,0 +1,76 @@
+%% methology.tex
+%% ==============================
+\chapter{Methology}
+\label{ch:methology}
+%% ==============================
+\section{Data collection}
+\label{sec:data-collection}
+This study is divided in two separated parts. The first part is a systematic review of the applications. We follow the guidelines of the reporting checklist of the Preferred Reporting Items for Systematic Reviews and Meta-Analysis (PRISMA \cite{moher2015preferred}).
+We define mood trackers as:
+"Applications for measuring and reporting mood by themselves on a daily basis".
+We exclude applications which are:
+\begin{itemize}
+    \item main focus is not mood tracking (eg. \textit{Daily Diary: Journal with Lock} \footnote{\url{https://play.google.com/store/apps/details?id=com.daily.journal.diary.lock.mood.tracker.free&hl=en&gl=US} Accessed: 2021-11-01})
+    \item doesn't collect mood behavior (eg. journalistic \footnote{\url{https://play.google.com/store/apps/details?id=com.journalisticapp.twa&hl=en&gl=US} Accessed: 2021-11-01})
+    \item tracking others behavior such as parenting applications or relationship applications (eg. \textit{behavior diary} \footnote{\url{https://play.google.com/store/apps/details?id=in.co.skycap.behaviourtracker&hl=en&gl=US} Accessed: 2021-11-01})
+    \item only available as a web app and not included in any applications store (eg. \textit{moodtracker.com}\footnote{\url{https://www.moodtracker.com/} Accessed: 2021-11-01})
+    \item targeting a specific group of people (eg. \textit{Bipolar Mood Tracker}\footnote{\url{https://play.google.com/store/apps/details?id=com.bipolar_flutter&hl=en&gl=US} Accessed: 2021-11-01})
+\end{itemize}
+As data source we are using the google play store\footnote{\url{https://play.google.com/store/games?hl=en&gl=US} Accessed on 2021-11-01 } as well as the apple appstore because the two operation systems covers more than 99\% of the worldwide mobile operation system market share.
+Our search queries are: ["mood tracker", "mood journal", "mood ema", "emotion tracker"].
+For feature extraction we are using the app descriptions as raw data. We include only applications which are available at the time period of our study (November 2022).
+The User Reviews are crawled with appbot\footnote{\url{https://appbot.co/} Accessed: 07.11.2022}.
+
+\section{Analyzing App Features}
+To extract the app feaures we download the Applications by ourself.
+We are using the same approach as Caldeira \cite{caldeira2017mobile} and categorize the features into:
+Preparation, Recording, Reflection, and Action.
+We also added privacy as another category, as this was mostly considered a concern of users in previous studies \cite{Balaskas2022UnderstandingUP}.
+
+\section{Analyzing User Reviews}
+%% ==============================
+\subsection{Preprocessing}
+We group our data into positive, neutral and negative reviews using the star ratings.
+As negative we define reviews with 1 or 2 stars, as neutral reviews with 3 stars and as positive reviews with 4 or 5 stars.
+\label{sec:analyzing-user-reviews}
+For analyzing the user reviews we are using two types of data mining.
+In our first study we are using n-gram frequency to get a first impression on the most important features.
+In our second study we are using topic modeling to get a better understanding of the context of the reviews.
+\subsection{N-gram frequency}
+\label{sec:n-gram-frequency}
+Just apply the term frequency can lead to rather meaningless results.
+The reason for this is, that some words are more used in the corpus itself and doesn't give any information about the content of the reviews.
+Instead we using the tf-idf (term frequency-inverse document frequency) to get a better understanding of the content of the reviews.
+It is a combination of the term frequency and the inverse document frequency.
+The term frequency is the number of times a word appears in a document.
+The inverse document frequency is the logarithm of the number of documents divided by the number of documents in which the word appears.
+
+However using single words as features can lead to miss some important information, since there are many terms which belongs together. 
+For example "battery life" or "user interface".
+To adress this issue we are using n-grams, which are sequences of n words.
+We stick to words and bigrams (n=2) for reducing the amount of items.
+\subsection{Topic modeling}
+Our second approach is to use a topic modeling which is a type of statistical modeling for discovering the abstract "topics" that occur in a collection of documents.
+With that we can label each review and yet get a probably better unterstanding over the context of the reviews than with only the most frequent words.
+It is to discuss if with small documents like reviews have a single topic or if they have multiple topics.
+We first assume that they cover multiple topics.
+A common way for topic modeling with multiple topics is the Latent Dirichlet Allocation (LDA) \cite{blei2003latent}.
+The idea behind LDA is that seach document is a mixture of topics and each topic is a mixture of words.
+With that we can label each review with the most probable topic. The rating can be used to define if the topic is positive or negative for the user.
+However assume that a negative review doesn't contain any positive oppinion is not always true.
+For example a user can say that the application is not working as expected but the user interface is nice.
+To adress this, the usage of sentiment analysis for the sentences might be a better approach.
+
+The problem with LDA can be to have no topics which are meaningful.
+While the topics are generate by a statistical methode, it can be the case that the words which belongs to a model are difficult for a human to
+The second method we use is to use a neural network for topic modeling.
+BERT-Topic \cite{grootendorst2022bertopic} is a current state of the art Topic Model which uses Bert Sentence Embeddings \cite{reimers2019sentence} as backbone. There are two advantage about this. At first we using the full sentence instead of single words for context analysis.
+The second, we can use predefined topics which makes more sense than with LDA.
+A limitation is, that we might miss some important topics which arent't predefined.
+The second is that we can't train a network on our own, because of our small dataset. This means we are limited to pretrained data and might have a bias.
+
+\section{Evaluate the results}
+We are using a combined evaluation using human judgment and quantitative metrics.
+For our human judgement we observe the top words in a topic using word clouds. 
+With our prior knowledge of older surveys and human interpretation we look for the frequency of word intrusion.
+In order to have a quantitative metric we use the coherence of the topics instead of perplexity.
