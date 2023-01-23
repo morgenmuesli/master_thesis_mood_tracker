@@ -1,7 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/app/src/connector/database.py" dialect="GenericSQL" />
-    <file url="PROJECT" dialect="MariaDB" />
-  </component>
-</project>
+version https://git-lfs.github.com/spec/v1
+oid sha256:9efb084dfe5d6a472a669238db9fabf4343d265ba0d3a6afd0dd70e05aef80ec
+size 268
